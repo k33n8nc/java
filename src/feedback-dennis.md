@@ -26,10 +26,14 @@ Met Events zou je bij opvragen menu eerst een time check kunnen doen alvorens he
 {
 time: morning,
 items: [
-{name: Pancakes,
-price: 10.00},
-{name: Omelette,
-price: 12.00}
+    {
+        name: Pancakes,
+        price: 10.00
+    },
+    {
+        name: Omelette,
+        price: 12.00
+    }
 ]
 }
 ```
