@@ -15,7 +15,8 @@ is uit te breiden door categorieën toe te voegen, zoals voorgerecht, hoofdgerec
 {
 id: 001,
 name: Spaghetti Bolognese,
-price: 20.00
+price: 20.00,
+category: main
 }
 ```
 

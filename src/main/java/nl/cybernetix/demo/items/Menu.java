@@ -4,19 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 
 @Getter
+@RequiredArgsConstructor
 public class Menu {
-    public static final String starter = "Starter";
-    public static final String mainCourse = "Main course";
-    public static final String dessert = "Dessert";
+    private static List<MenuItem> menuItems;
 
-    public static List<String> getItems(){
-        List<String> menuItems = new ArrayList<>();
-        menuItems.add(starter);
-        menuItems.add(mainCourse);
-        menuItems.add(dessert);
-        return menuItems;
-    }
+
 
 }
