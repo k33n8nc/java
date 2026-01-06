@@ -37,3 +37,15 @@ items: [
 ]
 }
 ```
+
+Wat is de context?
+Zijn we een enkel restaurant dan is een statische kaart prima (afhankelijk van de behoefte).
+Is er een nieuw menu of een wijziging dan doen we dat op de statische kaart.
+
+Heb je scenario's zoals hierboven dan zijn er meerdere opties. Ben je een franchise en heb je 
+verschillende menu's o.b.v locatie dan wil je weer een andere opzet.
+
+Wat als we het menu later willen uitbreiden, bijvoorbeeld met:
+- category
+- foodType
+- kcal
