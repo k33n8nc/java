@@ -18,7 +18,7 @@ public class Chef {
 
     @EventListener
     public void cookOrder(OrderTakenEvent event) {
-        log.info("Chef: Received order {}. Cooking items: {}. Publishing OrderCookedEvent.", event.getOrder().getOrderId(), event.getOrder().getOrder());
+        log.info("Chef: Received order {}. Cooking items: {}. Publishing OrderCookedEvent.", event.getOrder().getOrderId(), event.getOrder().getItems());
         publisher.publishEvent(new OrderCookedEvent(event.getOrder()));
     }
 }
