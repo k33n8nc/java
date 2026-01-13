@@ -4,13 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import lombok.Getter;
-import lombok.RequiredArgsConstructor;
 
 @Getter
-@RequiredArgsConstructor
 public class Menu {
-    private static List<MenuItem> menuItems;
+    private final List<MenuItem> menuItems = new ArrayList<>();
 
-
-
+    public void addMenuItem(MenuItem item) {
+        this.menuItems.add(item);
+    }
 }
