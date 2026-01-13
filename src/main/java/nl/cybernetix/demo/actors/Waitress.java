@@ -7,6 +7,8 @@ import nl.cybernetix.demo.events.OrderCookedEvent;
 import nl.cybernetix.demo.events.OrderServedEvent;
 import nl.cybernetix.demo.events.OrderTakenEvent;
 import nl.cybernetix.demo.items.Menu;
+import nl.cybernetix.demo.items.MenuFactory;
+import nl.cybernetix.demo.items.MenuItem;
 import nl.cybernetix.demo.items.Order;
 import nl.cybernetix.demo.utils.Communicator;
 import org.slf4j.Logger;
@@ -29,19 +31,23 @@ public class Waitress {
 
     private String uuid;
     private String name;
-    private List<String> noteBook = new ArrayList<>();
+
+    private final MenuFactory menuFactory;
 
     // Event publisher
     public void takeOrder() {
-        noteBook.clear();
         log.info("Waitress {} is taking an order.", name);
-        for (String menuItem : Menu.getItems()) {
+        
+        Menu menu = menuFactory.createMenu();
+        List<MenuItem> noteBook = new ArrayList<>();
+
+        for (MenuItem menuItem : menu.getMenuItems()) {
             if (communicator.askYesNoQuestion(name + ": Would you like a " + menuItem + "?")) {
                 noteBook.add(menuItem);
             }
         }
         Order newOrder = new Order(noteBook);
-        log.info("Waitress {}: Order taken with {}. Now publishing OrderTakenEvent.", name, newOrder.getOrder());
+        log.info("Waitress {}: Order taken with {}. Now publishing OrderTakenEvent.", name, newOrder.getItems());
         publisher.publishEvent(new OrderTakenEvent(newOrder));
     }
 
