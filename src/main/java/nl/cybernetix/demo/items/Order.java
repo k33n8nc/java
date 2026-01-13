@@ -12,5 +12,5 @@ public class Order {
     private final UUID orderId = UUID.randomUUID();
     private final LocalDateTime createdAt = LocalDateTime.now();
     @NonNull
-    private List<String> order;
+    private List<MenuItem> items;
 }
