@@ -1,7 +1,9 @@
-package nl.cybernetix.demo.actors;
+package java.nl.cybernetix.demo.actors;
 
+import nl.cybernetix.demo.actors.Customer;
 import nl.cybernetix.demo.events.OrderServedEvent;
 import nl.cybernetix.demo.items.Order;
+import nl.cybernetix.demo.items.MenuItem;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.boot.test.system.CapturedOutput;
@@ -17,7 +19,11 @@ class CustomerTest {
     @Test
     void happyCustomerShouldBeGrateful(CapturedOutput output) {
         Customer customer = new Customer();
-        Order order = new Order(List.of("Fries"));
+        List<MenuItem> items = List.of(
+                new MenuItem("1", "Fries", 4.50),
+                new MenuItem("2", "Pizza", 11.00)
+        );
+        Order order = new Order(items);
 
         customer.sayThanks(new OrderServedEvent(order));
 
