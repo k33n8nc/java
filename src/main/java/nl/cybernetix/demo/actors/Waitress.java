@@ -34,7 +34,6 @@ public class Waitress {
 
     private final MenuFactory menuFactory;
 
-    // Event publisher
     public void takeOrder() {
         log.info("Waitress {} is taking an order.", name);
         
