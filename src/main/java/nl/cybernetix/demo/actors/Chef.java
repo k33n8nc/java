@@ -3,7 +3,6 @@ package nl.cybernetix.demo.actors;
 import lombok.RequiredArgsConstructor;
 import nl.cybernetix.demo.events.OrderCookedEvent;
 import nl.cybernetix.demo.events.OrderTakenEvent;
-import nl.cybernetix.demo.items.Order;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationEventPublisher;
