@@ -7,6 +7,12 @@ Encapsulation door Menu controle te geven over eigen "internal" state.
 Classes zouden standaard immutable moeten zijn tenzij er een reden is om het niet te doen.
 In dit geval wil je enkel dat de Waitress een Menu kan presenteren en van daar een order kan opmaken.
 
+# Hoe verder?
+- Unit en IT afmaken
+- Applicatie opdelen in zodat hij volledig voldoet aan SRP.
+- Waitress krijgt 2 services, TakeOrderService, ServeOrderService 
+- (of waitress verdwijnt geheel omdat we een virtueel restaurant zijn)
+
 # Vragen
 - De Factory class is een utility? Hoe noemen we dit? Wat gebeurt hier precies?
 - We kunnen hiermee de applicatie configurabel maken, wat als we o.b.v. tijd nu verschillende menu's willen aanbieden.
@@ -17,3 +23,4 @@ Ik merk dat ik vaker zeg dat het later altijd indaalt, maar volgens mij
 kan ik me niet genoeg concentreren wanneer ik in een meeting zit. Teveel afleiding.
 - realiseer je dit en handel indien nodig
 - neem momenten na meetings voor korte analyse (5/10 min)
+
