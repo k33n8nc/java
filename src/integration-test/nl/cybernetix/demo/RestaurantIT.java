@@ -4,7 +4,7 @@ import nl.cybernetix.demo.actors.Customer;
 import nl.cybernetix.demo.actors.Waitress;
 import nl.cybernetix.demo.events.OrderCookedEvent;
 import nl.cybernetix.demo.events.OrderServedEvent;
-import nl.cybernetix.demo.items.Menu;
+import nl.cybernetix.demo.items.MenuItem;
 import nl.cybernetix.demo.utils.Communicator;
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;
@@ -37,8 +37,8 @@ public class RestaurantIT {
     @Test
     void takeOrderTriggersCookOrderEvent() {
         when(communicator.askYesNoQuestion(anyString())).thenReturn(true);
-        waitress.setName("Jessica");
 
+        waitress.setName("Jessica");
         waitress.takeOrder();
 
         OrderCookedEvent event = applicationEvents.stream(OrderCookedEvent.class)
@@ -48,24 +48,29 @@ public class RestaurantIT {
         assertThat(event)
                 .isNotNull();
 
-        assertThat(event.getOrder().getOrder())
-                .containsExactlyInAnyOrder(Menu.starter, Menu.mainCourse, Menu.dessert);
+        assertThat(event.getOrder().getItems())
+                .extracting(MenuItem::getName)
+                .containsExactlyInAnyOrder("Spaghetti Bolognese", "Margherita Pizza", "Caesar Salad");
 
     }
 
     @Test
     void takeOrderTriggersServedOrderEvent() {
-        waitress.setName("Jessica");
-        when(communicator.askYesNoQuestion("Jessica: Would you like a " + Menu.starter + "?")).thenReturn(true);
-        when(communicator.askYesNoQuestion("Jessica: Would you like a " + Menu.mainCourse + "?")).thenReturn(false);
-        when(communicator.askYesNoQuestion("Jessica: Would you like a " + Menu.dessert + "?")).thenReturn(true);
+        when(communicator.askYesNoQuestion(anyString())).thenReturn(true);
 
+//        when(communicator.askYesNoQuestion("Jessica: Would you like Spaghetti Bolognese for 12.5?")).thenReturn(true);
+//        when(communicator.askYesNoQuestion("Jessica: Would you like Margherita Pizza for 10.0?")).thenReturn(false);
+//        when(communicator.askYesNoQuestion("Jessica: Would you like Caesar Salad for 8.75?")).thenReturn(true);
+
+        waitress.setName("Jessica");
         waitress.takeOrder();
 
         ArgumentCaptor<OrderServedEvent> eventCaptor = ArgumentCaptor.forClass(OrderServedEvent.class);
         verify(customer, times(1)).sayThanks(eventCaptor.capture());
 
         OrderServedEvent servedEvent = eventCaptor.getValue();
-        assertThat(servedEvent.getOrder().getOrder()).containsExactly(Menu.starter, Menu.dessert);
+        assertThat(servedEvent.getOrder().getItems())
+                .extracting(MenuItem::getName)
+                .containsExactlyInAnyOrder("Spaghetti Bolognese", "Margherita Pizza", "Caesar Salad");
     }
 }

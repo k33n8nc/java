@@ -1,6 +1,5 @@
-package java.nl.cybernetix.demo.actors;
+package nl.cybernetix.demo.actors;
 
-import nl.cybernetix.demo.actors.Customer;
 import nl.cybernetix.demo.events.OrderServedEvent;
 import nl.cybernetix.demo.items.Order;
 import nl.cybernetix.demo.items.MenuItem;

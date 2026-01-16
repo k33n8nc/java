@@ -1,6 +1,5 @@
-package java.nl.cybernetix.demo.actors;
+package nl.cybernetix.demo.actors;
 
-import nl.cybernetix.demo.actors.Chef;
 import nl.cybernetix.demo.events.OrderCookedEvent;
 import nl.cybernetix.demo.events.OrderTakenEvent;
 import nl.cybernetix.demo.items.MenuItem;
@@ -42,8 +41,8 @@ public class ChefTest {
         verify(publisher).publishEvent(eventCaptor.capture());
         OrderCookedEvent publishedEvent = eventCaptor.getValue();
 
-        // the last (MenuItem) items is casting this so that assert can use it?
-        assertThat(publishedEvent.getOrder().getItems()).containsExactly((MenuItem) items);
+        // (MenuItem) items -> is casting this so that assert can use it?
+        assertThat(publishedEvent.getOrder().getItems()).containsExactly(((MenuItem) items.get(0)), ((MenuItem) items.get(1)));
     }
 
 }
