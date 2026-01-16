@@ -40,11 +40,11 @@ public class Waitress {
         Menu menu = menuFactory.createMenu();
         List<MenuItem> noteBook = new ArrayList<>();
 
-        for (MenuItem menuItem : menu.getMenuItems()) {
+        menu.getMenuItems().forEach(menuItem -> {
             if (communicator.askYesNoQuestion(name + ": Would you like a " + menuItem + "?")) {
                 noteBook.add(menuItem);
             }
-        }
+        });
         Order newOrder = new Order(noteBook);
         log.info("Waitress {}: Order taken with {}. Now publishing OrderTakenEvent.", name, newOrder.getItems());
         publisher.publishEvent(new OrderTakenEvent(newOrder));
