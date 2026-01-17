@@ -83,6 +83,25 @@
 					</argLine>
 				</configuration>
 			</plugin>
+			<plugin>
+				<groupId>org.pitest</groupId>
+				<artifactId>pitest-maven</artifactId>
+				<version>1.17.0</version> <dependencies>
+				<dependency>
+					<groupId>org.pitest</groupId>
+					<artifactId>pitest-junit5-plugin</artifactId>
+					<version>1.2.3</version>
+				</dependency>
+			</dependencies>
+				<configuration>
+					<targetClasses>
+						<param>nl.cybernetix.demo.*</param>
+					</targetClasses>
+					<targetTests>
+						<param>nl.cybernetix.demo.*</param>
+					</targetTests>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
 
