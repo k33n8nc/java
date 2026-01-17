@@ -8,7 +8,7 @@ Classes zouden standaard immutable moeten zijn tenzij er een reden is om het nie
 In dit geval wil je enkel dat de Waitress een Menu kan presenteren en van daar een order kan opmaken.
 
 # Hoe verder?
-- Unit en IT afmaken
+- [x] Unit en IT afmaken
 - Applicatie opdelen in zodat hij volledig voldoet aan SRP.
 - Waitress krijgt 2 services, TakeOrderService, ServeOrderService 
 - (of waitress verdwijnt geheel omdat we een virtueel restaurant zijn)
@@ -24,3 +24,8 @@ kan ik me niet genoeg concentreren wanneer ik in een meeting zit. Teveel afleidi
 - realiseer je dit en handel indien nodig
 - neem momenten na meetings voor korte analyse (5/10 min)
 
+# Feedback
+Waitress hoeft niks te weten van de factory, enkel van het menu.
+Zorg ervoor dat het menu vanuit een echte config komt, bijvoorbeeld vanuit een yaml of config.
+opruimen kijk bijvoorbeeld naar WaitressTest, menu wordt meermaals aangemaakt, kan ook makkelijker.
+Check pitest en zorg voor coverage 100%;
