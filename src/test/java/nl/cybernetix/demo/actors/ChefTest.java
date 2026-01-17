@@ -2,6 +2,8 @@ package nl.cybernetix.demo.actors;
 
 import nl.cybernetix.demo.events.OrderCookedEvent;
 import nl.cybernetix.demo.events.OrderTakenEvent;
+import nl.cybernetix.demo.items.Menu;
+import nl.cybernetix.demo.items.MenuFactory;
 import nl.cybernetix.demo.items.MenuItem;
 import nl.cybernetix.demo.items.Order;
 import org.junit.jupiter.api.Test;
@@ -9,6 +11,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.ArgumentCaptor;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.Spy;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.context.ApplicationEventPublisher;
 
@@ -23,15 +26,15 @@ public class ChefTest {
     @Mock
     private ApplicationEventPublisher publisher;
 
+    @Spy
+    private Menu menu = new MenuFactory().createMenu();
+
     @InjectMocks
     private Chef chef;
 
     @Test
     void cookOrderShouldReturnCorrectOrderInEvent(){
-        List<MenuItem> items = List.of(
-                new MenuItem("1", "Fanta", 2.50),
-                new MenuItem("2", "Pizza", 11.00)
-        );
+        List<MenuItem> items = menu.getMenuItems().subList(0, 2);
         Order order = new Order(items);
         OrderTakenEvent event = new OrderTakenEvent(order);
 
@@ -41,8 +44,7 @@ public class ChefTest {
         verify(publisher).publishEvent(eventCaptor.capture());
         OrderCookedEvent publishedEvent = eventCaptor.getValue();
 
-        // (MenuItem) items -> is casting this so that assert can use it?
-        assertThat(publishedEvent.getOrder().getItems()).containsExactly(((MenuItem) items.get(0)), ((MenuItem) items.get(1)));
+        assertThat(publishedEvent.getOrder().getItems()).containsExactlyElementsOf(items);
     }
 
 }
