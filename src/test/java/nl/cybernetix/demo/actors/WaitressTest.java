@@ -34,9 +34,6 @@ public class WaitressTest {
     private Communicator communicator;
 
     @Mock
-    private MenuFactory menuFactory;
-
-    @Mock
     private Menu menu;
 
     @InjectMocks
@@ -54,7 +51,6 @@ public class WaitressTest {
         MenuItem item2 = new MenuItem("2", "Margherita Pizza", 10.0);
 
         when(menu.getMenuItems()).thenReturn(List.of(item1, item2));
-        when(menuFactory.createMenu()).thenReturn(menu);
 
         when(communicator.askYesNoQuestion("Alice: Would you like a " + item1 + "?")).thenReturn(false);
         when(communicator.askYesNoQuestion("Alice: Would you like a " + item2 + "?")).thenReturn(true);

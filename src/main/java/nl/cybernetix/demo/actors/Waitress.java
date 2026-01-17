@@ -29,15 +29,14 @@ public class Waitress {
     private final ApplicationEventPublisher publisher;
     private final Communicator communicator;
 
+    private final Menu menu;
+
     private String uuid;
     private String name;
 
-    private final MenuFactory menuFactory;
-
     public void takeOrder() {
         log.info("Waitress {} is taking an order.", name);
-        
-        Menu menu = menuFactory.createMenu();
+
         List<MenuItem> noteBook = new ArrayList<>();
 
         menu.getMenuItems().forEach(menuItem -> {
