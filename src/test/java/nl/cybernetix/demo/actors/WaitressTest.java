@@ -14,6 +14,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.ArgumentCaptor;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.Spy;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.context.ApplicationEventPublisher;
 
@@ -33,8 +34,10 @@ public class WaitressTest {
     @Mock
     private Communicator communicator;
 
-    @Mock
-    private Menu menu;
+    @Spy
+    private Menu menu = new MenuFactory().createMenu();
+    // In plaats van Menu aan te maken onder @BeforeEach setUp() method
+    // gebruik ik Spy Bean.
 
     @InjectMocks
     private Waitress waitress;
@@ -47,13 +50,19 @@ public class WaitressTest {
 
     @Test
     void takeOrderShouldPublishOrderTakenEvent() {
-        MenuItem item1 = new MenuItem("1", "Spaghetti Bolognese", 12.5);
-        MenuItem item2 = new MenuItem("2", "Margherita Pizza", 10.0);
 
-        when(menu.getMenuItems()).thenReturn(List.of(item1, item2));
+//        for (MenuItem item : menu.getMenuItems()) {
+//            if (item.getName().equals("Margherita Pizza")) {
+//                when(communicator.askYesNoQuestion("Alice: Would you like a " + item + "?")).thenReturn(false);
+//            } else {
+//                when(communicator.askYesNoQuestion("Alice: Would you like a " + item + "?")).thenReturn(true);
+//            }
+//        }
 
-        when(communicator.askYesNoQuestion("Alice: Would you like a " + item1 + "?")).thenReturn(false);
-        when(communicator.askYesNoQuestion("Alice: Would you like a " + item2 + "?")).thenReturn(true);
+        menu.getMenuItems().forEach(item -> {
+            when(communicator.askYesNoQuestion("Alice: Would you like a " + item + "?"))
+                    .thenReturn(!item.getName().equals("Margherita Pizza"));
+        });
 
         waitress.takeOrder();
 
@@ -62,7 +71,7 @@ public class WaitressTest {
 
         OrderTakenEvent publishedEvent = eventCaptor.getValue();
 
-        assertThat(publishedEvent.getOrder().getItems()).containsExactly(item2);
+        assertThat(publishedEvent.getOrder().getItems()).containsExactly(menu.getMenuItems().get(0), menu.getMenuItems().get(2));
     }
 
     @Test

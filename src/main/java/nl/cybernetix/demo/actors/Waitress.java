@@ -22,7 +22,7 @@ import java.util.List;
 
 @Getter
 @Setter
-@Component // Marks the class as a Spring bean -> Makes bean available for dependency injection
+@Component
 @RequiredArgsConstructor
 public class Waitress {
     private static final Logger log = LoggerFactory.getLogger(Waitress.class);
