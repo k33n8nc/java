@@ -41,14 +41,14 @@ public class RestaurantIT {
         waitress.setName("Jessica");
         waitress.takeOrder();
 
-        OrderCookedEvent event = applicationEvents.stream(OrderCookedEvent.class)
+        OrderCookedEvent cookedEvent = applicationEvents.stream(OrderCookedEvent.class)
                 .findFirst()
                 .orElse(null);
 
-        assertThat(event)
+        assertThat(cookedEvent)
                 .isNotNull();
 
-        assertThat(event.getOrder().getItems())
+        assertThat(cookedEvent.getOrder().getItems())
                 .extracting(MenuItem::getName)
                 .containsExactlyInAnyOrder("Spaghetti Bolognese", "Margherita Pizza", "Caesar Salad");
 
@@ -57,10 +57,6 @@ public class RestaurantIT {
     @Test
     void takeOrderTriggersServedOrderEvent() {
         when(communicator.askYesNoQuestion(anyString())).thenReturn(true);
-
-//        when(communicator.askYesNoQuestion("Jessica: Would you like Spaghetti Bolognese for 12.5?")).thenReturn(true);
-//        when(communicator.askYesNoQuestion("Jessica: Would you like Margherita Pizza for 10.0?")).thenReturn(false);
-//        when(communicator.askYesNoQuestion("Jessica: Would you like Caesar Salad for 8.75?")).thenReturn(true);
 
         waitress.setName("Jessica");
         waitress.takeOrder();
