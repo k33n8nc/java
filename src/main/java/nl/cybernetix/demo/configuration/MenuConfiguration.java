@@ -16,6 +16,10 @@ public class MenuConfiguration {
 
     @Bean
     public Menu menu(){
-        return menuFactory.createMenu();
+        Menu menu = menuFactory.createMenu();
+        if(menu == null){
+            throw new IllegalStateException("Menu cannot be null");
+        }
+        return menu;
     }
 }

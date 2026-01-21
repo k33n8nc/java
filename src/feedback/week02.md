@@ -25,9 +25,9 @@ kan ik me niet genoeg concentreren wanneer ik in een meeting zit. Teveel afleidi
 - neem momenten na meetings voor korte analyse (5/10 min)
 
 # Feedback
-- [x] Installeer Maven pit-test 
+- [x] Installeer Maven pitest
 - [x] Waitress hoeft niks te weten van de factory, enkel van het menu.
-- [] Zorg ervoor dat het menu vanuit een echte config komt, bijvoorbeeld vanuit een yaml of config.
-- [] Zorg voor 96% coverage
 - [x] Unit Tests nalopen - menu wordt meermaals aangemaakt, kan ook makkelijker.
-- [] Integration Tests nalopen
+- [x] Integration Tests nalopen
+- [] Zorg voor 96% coverage
+- [] Zorg ervoor dat het menu vanuit een echte config komt, bijvoorbeeld vanuit een yaml of config.
