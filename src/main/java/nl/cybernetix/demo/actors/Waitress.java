@@ -1,13 +1,13 @@
 package nl.cybernetix.demo.actors;
 
 import lombok.Getter;
+import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import nl.cybernetix.demo.events.OrderCookedEvent;
 import nl.cybernetix.demo.events.OrderServedEvent;
 import nl.cybernetix.demo.events.OrderTakenEvent;
 import nl.cybernetix.demo.items.Menu;
-import nl.cybernetix.demo.items.MenuFactory;
 import nl.cybernetix.demo.items.MenuItem;
 import nl.cybernetix.demo.items.Order;
 import nl.cybernetix.demo.utils.Communicator;
@@ -20,8 +20,6 @@ import org.springframework.stereotype.Component;
 import java.util.ArrayList;
 import java.util.List;
 
-@Getter
-@Setter
 @Component
 @RequiredArgsConstructor
 public class Waitress {
@@ -29,9 +27,13 @@ public class Waitress {
     private final ApplicationEventPublisher publisher;
     private final Communicator communicator;
 
+    @NonNull // MenuFactory aanpassen
     private final Menu menu;
 
+    @Getter @Setter
     private String uuid;
+
+    @Getter @Setter
     private String name;
 
     public void takeOrder() {
