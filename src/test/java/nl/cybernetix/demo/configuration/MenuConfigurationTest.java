@@ -20,7 +20,7 @@ class MenuConfigurationTest {
     private MenuConfiguration menuConfiguration;
 
     @Test
-    void menu_ThrowsException_WhenFactoryReturnsNull() {
+    void throwsExceptionWhenMenuFactoryReturnsNull() {
         when(menuFactory.createMenu()).thenReturn(null);
 
         assertThrows(IllegalStateException.class, () -> menuConfiguration.menu());
