@@ -1,7 +1,6 @@
 package nl.cybernetix.demo.actors;
 
 import lombok.Getter;
-import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import nl.cybernetix.demo.events.OrderCookedEvent;
@@ -27,8 +26,8 @@ public class Waitress {
     private final ApplicationEventPublisher publisher;
     private final Communicator communicator;
 
-    @NonNull // MenuFactory aanpassen
-    private final Menu menu;
+    @Setter
+    private Menu menu;
 
     @Getter @Setter
     private String uuid;
