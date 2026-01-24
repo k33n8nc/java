@@ -29,5 +29,4 @@ kan ik me niet genoeg concentreren wanneer ik in een meeting zit. Teveel afleidi
 - [x] Waitress hoeft niks te weten van de factory, enkel van het menu.
 - [x] Unit Tests nalopen - menu wordt meermaals aangemaakt, kan ook makkelijker.
 - [x] Integration Tests nalopen
-- [] Zorg voor 96% coverage
-- [] Zorg ervoor dat het menu vanuit een echte config komt, bijvoorbeeld vanuit een yaml of config.
+
