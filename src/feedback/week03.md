@@ -5,6 +5,8 @@ Kan dit makkelijker? Kan ik een Mock maken van het Menu (dus gevuld door MenuFac
 - [] Zorg voor 96% coverage
 - [] Zorg ervoor dat het menu vanuit een echte config komt, bijvoorbeeld vanuit een yaml of config.
 - [] Zorg voor een infinite loop in applicatie (zodat je meerdere orders kunt plaatsen)
+- Kan ik while restaurant = open(); gebruiken of aanmaken? Dat lijkt me een goed oplossing...
+- Zo lang het restaurant open is blijven we orders opnemen totdat het restaurant sluit.
 
 # Opmerkingen
 - Als je code faalt op het moment dat het moet falen is dat prima. (je hoeft dat niet in te bouwen en te testen == null ?)
