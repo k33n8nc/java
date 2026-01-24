@@ -14,3 +14,8 @@ Kan dit makkelijker? Kan ik een Mock maken van het Menu (dus gevuld door MenuFac
 - line coverage ook, als je er lastig bij komt kan dat ook een signaal zijn
 - wees kritisch op je code en bekijk en begrijp je feedback goed
 - leesbaarheid, testbaarheid en onderhoudbaarheid
+
+# Bevindingen
+Ik denk dat imperative vs. declarative ook meer gaat spelen in het kader van leesbaarheid.
+Zie commit MenuConfiguration van 24 jan. Juist doordat de classes zo klein mogelijk blijven 
+profiteer je van de leesbaarheid.
