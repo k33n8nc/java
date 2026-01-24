@@ -8,6 +8,8 @@ import org.springframework.context.annotation.Configuration;
 
 import lombok.AllArgsConstructor;
 
+import java.util.Optional;
+
 @Configuration
 @AllArgsConstructor
 public class MenuConfiguration {
@@ -16,10 +18,7 @@ public class MenuConfiguration {
 
     @Bean
     public Menu menu(){
-        Menu menu = menuFactory.createMenu();
-        if(menu == null){
-            throw new IllegalStateException("Menu cannot be null");
-        }
-        return menu;
+        return Optional.ofNullable(menuFactory.createMenu())
+            .orElseThrow(() -> new IllegalStateException("Menu cannot be null"));
     }
 }
