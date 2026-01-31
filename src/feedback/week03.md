@@ -11,7 +11,7 @@ Kan dit makkelijker? Kan ik een Mock maken van het Menu (dus gevuld door MenuFac
 # Opmerkingen
 - Als je code faalt op het moment dat het moet falen is dat prima. (je hoeft dat niet in te bouwen en te testen == null ?)
 - als iets lastig te testen moet dat een signaal zijn dat de code anders moet
-- line coverage ook, als je er lastig bij komt kan dat ook een signaal zijn
+- line coverage, als je er lastig bij komt kan dat ook een signaal zijn
 - wees kritisch op je code en bekijk en begrijp je feedback goed
 - leesbaarheid, testbaarheid en onderhoudbaarheid
 
