@@ -19,8 +19,7 @@ import org.springframework.stereotype.Component;
 import java.util.ArrayList;
 import java.util.List;
 
-@Component
-@RequiredArgsConstructor
+@Component @RequiredArgsConstructor
 public class Waitress {
     private static final Logger log = LoggerFactory.getLogger(Waitress.class);
     private final ApplicationEventPublisher publisher;
