@@ -11,7 +11,6 @@ import org.mockito.ArgumentCaptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.bean.override.mockito.MockitoBean;
-import org.springframework.test.context.bean.override.mockito.MockitoSpyBean;
 import org.springframework.test.context.event.ApplicationEvents;
 import org.springframework.test.context.event.RecordApplicationEvents;
 
@@ -19,9 +18,12 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.*;
 
-@SpringBootTest
+@SpringBootTest(classes = Application.class)
 @RecordApplicationEvents
 public class RestaurantIT {
+    @Autowired
+    private Restaurant restaurant;
+
     @Autowired
     private Waitress waitress;
 
@@ -31,8 +33,17 @@ public class RestaurantIT {
     @MockitoBean
     private Communicator communicator;
 
-    @MockitoSpyBean
+    @MockitoBean
     private Customer customer;
+
+    @Test
+    void testRestaurantIsReady() {
+        when(communicator.askYesNoQuestion(anyString())).thenReturn(true);
+
+        restaurant.open();
+
+        verify(communicator, atLeastOnce()).askYesNoQuestion(anyString());
+    }
 
     @Test
     void takeOrderTriggersCookOrderEvent() {
