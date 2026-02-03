@@ -19,3 +19,8 @@ Kan dit makkelijker? Kan ik een Mock maken van het Menu (dus gevuld door MenuFac
 Ik denk dat imperative vs. declarative ook meer gaat spelen in het kader van leesbaarheid.
 Zie commit MenuConfiguration van 24 jan. Juist doordat de classes zo klein mogelijk blijven 
 profiteer je van de leesbaarheid.
+
+week 4 -> 
+Kijk naar Optional.ofNullable, Waitress heeft menu nodig dus dit gaat niet werken (zie commit 24 jan);
+Configureer pitest -> Geen IT's en kijken welke echt nodig zijn. 
+Zie pom.xml en zoek naar pitest. Daar vind je plugin en settings / config
