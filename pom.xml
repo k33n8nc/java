@@ -100,6 +100,12 @@
 					<targetTests>
 						<param>nl.cybernetix.demo.*</param>
 					</targetTests>
+					<excludedTestClasses>
+						<param>*IT</param>
+					</excludedTestClasses>
+					<excludedClasses>
+						<param>nl.cybernetix.demo.Application</param>
+					</excludedClasses>
 				</configuration>
 			</plugin>
 		</plugins>
