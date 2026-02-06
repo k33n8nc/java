@@ -33,15 +33,6 @@ public class RestaurantIT {
     @MockitoBean
     private Customer customer;
 
-//    @Test
-//    void testRestaurantIsReady() {
-//        when(communicator.askYesNoQuestion(anyString())).thenReturn(true);
-//
-//        restaurant.open();
-//
-//        verify(communicator, atLeastOnce()).askYesNoQuestion(anyString());
-//    }
-
     @Test
     void takeOrderTriggersCookOrderEvent() {
         when(communicator.askYesNoQuestion(anyString())).thenReturn(true);
@@ -58,7 +49,7 @@ public class RestaurantIT {
 
         assertThat(cookedEvent.getOrder().getItems())
                 .extracting(MenuItem::getName)
-                .containsExactlyInAnyOrder("Spaghetti Bolognese", "Margherita Pizza", "Caesar Salad");
+                .containsExactlyInAnyOrder("Croissant", "Omelet", "Baguette", "Spaghetti Bolognese", "Margherita Pizza", "Caesar Salad");
 
     }
 
@@ -75,6 +66,6 @@ public class RestaurantIT {
         OrderServedEvent servedEvent = eventCaptor.getValue();
         assertThat(servedEvent.getOrder().getItems())
                 .extracting(MenuItem::getName)
-                .containsExactlyInAnyOrder("Spaghetti Bolognese", "Margherita Pizza", "Caesar Salad");
+                .containsExactlyInAnyOrder("Croissant", "Omelet", "Baguette", "Spaghetti Bolognese", "Margherita Pizza", "Caesar Salad");
     }
 }

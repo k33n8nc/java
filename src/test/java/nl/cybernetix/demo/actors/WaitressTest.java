@@ -3,6 +3,7 @@ package nl.cybernetix.demo.actors;
 import nl.cybernetix.demo.events.OrderCookedEvent;
 import nl.cybernetix.demo.events.OrderServedEvent;
 import nl.cybernetix.demo.events.OrderTakenEvent;
+import nl.cybernetix.demo.items.FoodCategory;
 import nl.cybernetix.demo.items.Menu;
 import nl.cybernetix.demo.items.MenuItem;
 import nl.cybernetix.demo.items.Order;
@@ -74,9 +75,9 @@ public class WaitressTest {
 
     private Menu createMenu(){
         return new Menu(List.of(
-                new MenuItem("1", "Spaghetti Bolognese", 12.5),
-                new MenuItem("2", "Margherita Pizza", 10.0),
-                new MenuItem("3", "Caesar Salad", 8.75)
+                new MenuItem("4", "Spaghetti Bolognese", 12.5, List.of(FoodCategory.DINNER)),
+                new MenuItem("5", "Margherita Pizza", 10.0, List.of(FoodCategory.DINNER)),
+                new MenuItem("6", "Caesar Salad", 8.75, List.of(FoodCategory.BREAKFAST, FoodCategory.DINNER))
         ));
     }
 }
