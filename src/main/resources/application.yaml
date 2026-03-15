@@ -1,0 +1,27 @@
+restaurant:
+  menu-category: BREAKFAST
+  menu-items:
+    - id: "1"
+      name: "Croissant"
+      price: 3.00
+      categories: [BREAKFAST]
+    - id: "2"
+      name: "Omelet"
+      price: 4.50
+      categories: [BREAKFAST, LUNCH]
+    - id: "3"
+      name: "Baguette"
+      price: 7.00
+      categories: [LUNCH]
+    - id: "4"
+      name: "Spaghetti Bolognese"
+      price: 12.50
+      categories: [DINNER]
+    - id: "5"
+      name: "Margherita Pizza"
+      price: 10.00
+      categories: [DINNER]
+    - id: "6"
+      name: "Caesar Salad"
+      price: 8.75
+      categories: [BREAKFAST, DINNER]

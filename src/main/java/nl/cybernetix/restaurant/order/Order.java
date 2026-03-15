@@ -1,0 +1,17 @@
+package nl.cybernetix.restaurant.order;
+import lombok.*;
+import nl.cybernetix.restaurant.menu.MenuItem;
+
+import java.time.LocalDateTime;
+import java.util.List;
+import java.util.UUID;
+
+@Getter
+@Setter
+@RequiredArgsConstructor
+public class Order {
+    private final UUID orderId = UUID.randomUUID();
+    private final LocalDateTime createdAt = LocalDateTime.now();
+    @NonNull
+    private List<MenuItem> items;
+}

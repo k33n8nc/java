@@ -95,16 +95,16 @@
 			</dependencies>
 				<configuration>
 					<targetClasses>
-						<param>nl.cybernetix.demo.*</param>
+						<param>nl.cybernetix.restaurant.*</param>
 					</targetClasses>
 					<targetTests>
-						<param>nl.cybernetix.demo.*</param>
+						<param>nl.cybernetix.restaurant.*</param>
 					</targetTests>
 					<excludedTestClasses>
 						<param>*IT</param>
 					</excludedTestClasses>
 					<excludedClasses>
-						<param>nl.cybernetix.demo.Application</param>
+						<param>nl.cybernetix.restaurant.Application</param>
 					</excludedClasses>
 				</configuration>
 			</plugin>
