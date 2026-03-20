@@ -8,9 +8,9 @@ import org.springframework.context.annotation.Configuration;
 
 import java.util.List;
 
+@Data
 @Configuration
 @ConfigurationProperties(prefix = "restaurant")
-@Data
 public class RestaurantConfig {
     private MenuCategory menuCategory;
     private List<MenuItem> menuItems;
