@@ -1,5 +1,6 @@
 package nl.cybernetix.restaurant.config;
 
+import nl.cybernetix.restaurant.Restaurant;
 import nl.cybernetix.restaurant.menu.Menu;
 import nl.cybernetix.restaurant.menu.MenuCategory;
 import nl.cybernetix.restaurant.menu.MenuFactory;

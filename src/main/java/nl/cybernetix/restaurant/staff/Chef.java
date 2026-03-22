@@ -1,6 +1,11 @@
 package nl.cybernetix.restaurant.staff;
 
+import java.util.List;
+import java.util.UUID;
+
 import lombok.RequiredArgsConstructor;
+
+import nl.cybernetix.restaurant.menu.MenuItem;
 import nl.cybernetix.restaurant.order.events.OrderCookedEvent;
 import nl.cybernetix.restaurant.order.events.OrderTakenEvent;
 import org.slf4j.Logger;
@@ -17,7 +22,10 @@ public class Chef {
 
     @EventListener
     public void cookOrder(OrderTakenEvent event) {
-        log.info("Chef: Received order {}. Cooking items: {}. Publishing OrderCookedEvent.", event.getOrder().getOrderId(), event.getOrder().getItems());
+        List<MenuItem> menuItems = event.getOrder().getItems();
+        UUID orderId = event.getOrder().getOrderId();
+
+        log.info("Chef: Received order {}. Cooking items: {}. Publishing OrderCookedEvent.", orderId, menuItems);
         publisher.publishEvent(new OrderCookedEvent(event.getOrder()));
     }
 }

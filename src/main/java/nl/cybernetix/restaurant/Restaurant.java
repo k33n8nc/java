@@ -1,5 +1,6 @@
-package nl.cybernetix.restaurant.config;
+package nl.cybernetix.restaurant;
 
+import nl.cybernetix.restaurant.config.RestaurantConfig;
 import nl.cybernetix.restaurant.staff.Waitress;
 import nl.cybernetix.restaurant.menu.MenuFactory;
 import org.springframework.stereotype.Component;
@@ -18,7 +19,11 @@ public class Restaurant {
         System.out.println("Restaurant is open! Starting the process...");
         waitress.setName("Jessica");
         waitress.setMenu(menuFactory.createMenu(restaurantConfig.getMenuCategory()));
-        waitress.takeOrder();
+
+        while(true){
+            waitress.takeOrder();
+        }
+
     }
 
 }
