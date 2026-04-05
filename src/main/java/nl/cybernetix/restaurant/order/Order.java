@@ -1,4 +1,5 @@
 package nl.cybernetix.restaurant.order;
+
 import lombok.*;
 import nl.cybernetix.restaurant.menu.MenuItem;
 
@@ -14,4 +15,5 @@ public class Order {
     private final LocalDateTime createdAt = LocalDateTime.now();
     @NonNull
     private List<MenuItem> items;
+    private OrderStatus status = OrderStatus.NEW;
 }
