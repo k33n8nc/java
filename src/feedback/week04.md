@@ -8,6 +8,9 @@
 
 - [ ] 3 losse processen (opnemen, bereiden, uitserveren van order)
 - [ ] weekend uitzoeken (plan maken, nog niet concreet uitwerken, maandag presenteren)
+- Doel hier is om te scheiden zodat processen tegelijk kunnen lopen.
+- We willen dus los van elkaar meerdere orders kunnen opnemen, bereiden en uitserveren.
+- Momenteel verwerkt de applicatie 1 order tegelijk, dus als er een order binnenkomt, wordt deze meteen verwerkt.
 
 - hoe weet ik nu of **IT ook echt uitgesloten is? Kan ik dat ergens zien?
 - Zijn er boilerplates voor Unit en IT? Het zou handig zijn als je zo iets als sout kan doen
