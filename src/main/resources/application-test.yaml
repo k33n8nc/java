@@ -1,5 +1,5 @@
 restaurant:
-  menu-category: DINNER
+  menu-category: BREAKFAST
   menu-items:
     - id: "1"
       name: "Croissant"

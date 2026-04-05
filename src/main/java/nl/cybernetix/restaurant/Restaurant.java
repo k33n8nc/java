@@ -19,10 +19,11 @@ public class Restaurant {
         System.out.println("Restaurant is open! Starting the process...");
         waitress.setName("Jessica");
         waitress.setMenu(menuFactory.createMenu(restaurantConfig.getMenuCategory()));
+        waitress.takeOrder();
 
-        while(true){
-            waitress.takeOrder();
-        }
+//        while(true){
+//            waitress.takeOrder();
+//        }
 
     }
 
