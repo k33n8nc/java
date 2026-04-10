@@ -20,9 +20,9 @@ public class Restaurant {
         waitress.setName("Jessica");
         waitress.setMenu(menuFactory.createMenu(restaurantConfig.getMenuCategory()));
 
-        waitress.takeOrder();
-        waitress.takeOrder();
-        waitress.takeOrder();
+        for(int i = 0; i < 3; i++){
+            waitress.takeInstantOrder();
+        }
     }
 
 }

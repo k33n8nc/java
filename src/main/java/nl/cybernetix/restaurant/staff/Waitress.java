@@ -3,17 +3,14 @@ package nl.cybernetix.restaurant.staff;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
+import nl.cybernetix.restaurant.order.OrderManager;
 import nl.cybernetix.restaurant.order.events.OrderCookedEvent;
-import nl.cybernetix.restaurant.order.events.OrderServedEvent;
-import nl.cybernetix.restaurant.order.events.OrderTakenEvent;
 import nl.cybernetix.restaurant.menu.Menu;
 import nl.cybernetix.restaurant.menu.MenuItem;
 import nl.cybernetix.restaurant.order.Order;
-import nl.cybernetix.restaurant.order.OrderStatus;
 import nl.cybernetix.restaurant.utils.Communicator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.context.event.EventListener;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
@@ -23,8 +20,12 @@ import java.util.List;
 
 @Component @RequiredArgsConstructor
 public class Waitress {
+    // ik kan hier focussen op main taken:
+    // - praten met klanten (Communicator)
+    // - orders opnemen (OrderManager)
     private static final Logger log = LoggerFactory.getLogger(Waitress.class);
-    private final ApplicationEventPublisher publisher;
+
+    private final OrderManager orderManager;
     private final Communicator communicator;
 
     @Setter
@@ -49,19 +50,22 @@ public class Waitress {
 
         if (!noteBook.isEmpty()) {
             Order newOrder = new Order(noteBook);
-            newOrder.setStatus(OrderStatus.TAKEN);
-            log.info("Waitress {}: Order taken with {}. Now publishing OrderTakenEvent.", name, newOrder.getItems());
-            publisher.publishEvent(new OrderTakenEvent(newOrder));
+            orderManager.takeOrder(newOrder);
+            log.info("Waitress {}: Order sent to OrderManager: {}", name, newOrder.getItems());
         }
     }
 
-    // Event listener en publisher
+    public void takeInstantOrder() {
+        log.info("Waitress {}: taking order...", name);
+        Order newOrder = new Order(menu.getMenuItems());
+        orderManager.takeOrder(newOrder);
+    }
+
     @Async
     @EventListener
     public void serveCustomer(OrderCookedEvent event){
         Order cookedOrder = event.getOrder();
-        cookedOrder.setStatus(OrderStatus.SERVED);
-        log.info("Waitress {}: Received cooked order {}. Serving to customer and publishing OrderServedEvent.", name, cookedOrder.getOrderId());
-        publisher.publishEvent(new OrderServedEvent(cookedOrder));
+        log.info("Waitress {}: Received cooked order {}. Serving to customer.", name, cookedOrder.getOrderId());
+        orderManager.serveOrder(cookedOrder);
     }
 }
