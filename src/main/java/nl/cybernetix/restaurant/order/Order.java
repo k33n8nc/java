@@ -11,7 +11,7 @@ import java.util.UUID;
 @Setter
 @RequiredArgsConstructor
 public class Order {
-    private final UUID orderId = UUID.randomUUID();
+    private final UUID id = UUID.randomUUID();
     private final LocalDateTime createdAt = LocalDateTime.now();
     @NonNull
     private List<MenuItem> items;

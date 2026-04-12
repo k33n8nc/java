@@ -16,13 +16,12 @@ public class Restaurant {
     private final RestaurantConfig restaurantConfig;
 
     public void open() {
-        System.out.println("Restaurant is open! Starting the process...");
         waitress.setName("Jessica");
         waitress.setMenu(menuFactory.createMenu(restaurantConfig.getMenuCategory()));
 
-        waitress.takeOrder();
-        waitress.takeOrder();
-        waitress.takeOrder();
+        for(int i = 0; i < 100; i++){
+            waitress.takeOrder();
+        }
     }
 
 }

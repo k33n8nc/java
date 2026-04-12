@@ -24,6 +24,6 @@ class CustomerTest {
 
         customer.sayThanks(new OrderServedEvent(order));
 
-        assertThat(output.getOut()).contains("Customer says thanks! Order " + order.getOrderId() + " has been received.");
+        assertThat(output.getOut()).contains("Customer says thanks! Order " + order.getId() + " has been received.");
     }
 }

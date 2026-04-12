@@ -12,7 +12,7 @@ public class SmsNotification implements INotification {
     private String recipient;
     @Override
     public String notifyUser(Order order) {
-        return "SMS notification for order: " + order.getOrderId() + " sent!";
+        return "SMS notification for order: " + order.getId() + " sent!";
     }
 
 }

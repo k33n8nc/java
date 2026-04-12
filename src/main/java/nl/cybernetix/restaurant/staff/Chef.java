@@ -1,11 +1,6 @@
 package nl.cybernetix.restaurant.staff;
 
-import java.util.List;
-import java.util.UUID;
-
 import lombok.RequiredArgsConstructor;
-
-import nl.cybernetix.restaurant.menu.MenuItem;
 import nl.cybernetix.restaurant.order.OrderStatus;
 import nl.cybernetix.restaurant.order.events.OrderCookedEvent;
 import nl.cybernetix.restaurant.order.events.OrderTakenEvent;
@@ -26,18 +21,16 @@ public class Chef {
     @EventListener
     public void cookOrder(OrderTakenEvent event) {
         event.getOrder().setStatus(OrderStatus.COOKING);
-        List<MenuItem> menuItems = event.getOrder().getItems();
-        UUID orderId = event.getOrder().getOrderId();
+        log.info("Chef: Order received {}. Order status: {}", event.getOrder().getId(), event.getOrder().getStatus());
 
-        log.info("Chef: Received order {}. Cooking items: {}. Publishing OrderCookedEvent.", orderId, menuItems);
-        
         try {
-            Thread.sleep(2000); // Simulate cooking time
+            Thread.sleep(6000);
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
         }
 
         event.getOrder().setStatus(OrderStatus.COOKED);
+        log.info("Chef: Order cooked {}. Order status: {}", event.getOrder().getId(), event.getOrder().getStatus());
         publisher.publishEvent(new OrderCookedEvent(event.getOrder()));
     }
 }

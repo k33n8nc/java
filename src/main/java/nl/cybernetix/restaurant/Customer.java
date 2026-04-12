@@ -12,6 +12,6 @@ public class Customer {
 
     @EventListener
     public void sayThanks(OrderServedEvent event){
-        log.info("Customer says thanks! Order {} has been received.", event.getOrder().getOrderId());
+        log.info("Customer says thanks! Order {} has been received.", event.getOrder().getId());
     }
 }
