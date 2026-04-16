@@ -13,4 +13,15 @@ Momenteel verwerkt de applicatie 1 order tegelijk, dus als er een order binnenko
 
 # ➡️Punt 2
 Uitzoeken hoe dit werkt met thread sleep? Het lijkt (zie console logs) als of de chef onbereikbaar is tijdens sleeps
-hierdoor worden event listeners in meerdere bulks uitvoerend.
+hierdoor worden event listeners in meerdere bulks uitgevoerd.
+
+# Proces
+Elk restaurant heeft een eigen order book.
+Elk restaurant heeft een eigen id en pusht naar main order book.
+
+# Doel voor nu
+- order queue: een lijst van orders die nog moeten worden verwerkt
+- chef moet in staat zijn orders af te werken en krijgt zelf ook een staat (idle, cooking, etc)
+
+# Extra
+- order book (eventueel) -> bijhouden van alle orders ook wat is geweest / afgerond
