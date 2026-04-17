@@ -1,24 +1,22 @@
 package nl.cybernetix.restaurant.order;
 
+import lombok.Getter;
 import org.springframework.stereotype.Component;
 
-import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.LinkedBlockingQueue;
+import java.util.LinkedList;
+import java.util.List;
 
 @Component
 public class OrderQueue {
-    private final BlockingQueue<Order> pendingOrders = new LinkedBlockingQueue<>();
+
+    @Getter
+    private final List<Order> pending = new LinkedList<>();
 
     public void addOrder(Order order) {
-        pendingOrders.offer(order);
+        pending.add(order);
     }
 
-    public Order takeNextOrder() throws InterruptedException {
-        // take() blokkeert de thread totdat er een order beschikbaar is
-        return pendingOrders.take();
-    }
-
-    public int getQueueSize() {
-        return pendingOrders.size();
+    public Order removeOrder() {
+        return pending.removeFirst();
     }
 }
